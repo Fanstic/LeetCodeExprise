@@ -14,7 +14,7 @@ public class TwoNumPlus {
         ListNode a = new ListNode(1);
         a.setNext(new ListNode(2));
         a.getNext().setNext(new ListNode(3));
-        a.getNext().getNext().setNext(new ListNode(0));
+        a.getNext().getNext().setNext(new ListNode(1));
 
 
         ListNode b = new ListNode(4);
@@ -37,7 +37,7 @@ public class TwoNumPlus {
      */
     public static LinkedList<Integer> cal(LinkedList<Integer> a, LinkedList<Integer> b) {
         LinkedList<Integer> resultList = new LinkedList<>();
-        int counter = 0;
+
 
         BigInteger sum = sum(a).add(sum(b));
         String sumStr = sum.toString(10);
@@ -144,7 +144,6 @@ public class TwoNumPlus {
 class ListNode {
     private int val;
     private ListNode next;
-    private int size = 0;
 
     public ListNode(int val) {
         this.setVal(val);
@@ -165,7 +164,6 @@ class ListNode {
 
     public void setNext(ListNode next) {
         this.next = next;
-        size++;
     }
 
     public int getSize() {
