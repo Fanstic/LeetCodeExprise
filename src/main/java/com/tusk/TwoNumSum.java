@@ -5,10 +5,11 @@ import java.util.Map;
 import java.util.Random;
 
 /**
- * @author tusk
+ * 题号1:两数求和
  * @desc 给定一个整数数组 nums 和一个目标值 target,在该数组中找出和为目标值的两个整数
  * 并返回它们的下标
  * 假设：每种输入只对应一个答案，但数组中的同一元素不能使用两次
+ * @author tusk
  * @date 2020/11/23 13:03
  */
 public class TwoNumSum {
