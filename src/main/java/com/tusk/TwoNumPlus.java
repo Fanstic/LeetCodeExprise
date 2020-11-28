@@ -1,5 +1,7 @@
 package com.tusk;
 
+import com.tusk.model.ListNode;
+
 import java.math.BigInteger;
 import java.util.LinkedList;
 
@@ -138,42 +140,3 @@ public class TwoNumPlus {
     }
 }
 
-/**
- * 链表节点
- */
-class ListNode {
-    private int val;
-    private ListNode next;
-
-    public ListNode(int val) {
-        this.setVal(val);
-    }
-
-    public int getVal() {
-        return val;
-    }
-
-    public void setVal(int val) {
-        this.val = val;
-    }
-
-
-    public ListNode getNext() {
-        return next;
-    }
-
-    public void setNext(ListNode next) {
-        this.next = next;
-    }
-
-    public int getSize() {
-        int count = 1;
-        ListNode node = this;
-        while (node.getNext() != null) {
-            node = node.getNext();
-            count++;
-        }
-
-        return count;
-    }
-}

@@ -7,7 +7,7 @@ package com.tusk;
  * @desc 给出一个 32 位整数，将这个整数的所有位上的数字反转，反转后溢出则返回0
  * @date 2020/11/25 8:38
  */
-public class TwoNumberReverse {
+public class NumberReverse {
     public static void main(String[] args) {
 
     }
