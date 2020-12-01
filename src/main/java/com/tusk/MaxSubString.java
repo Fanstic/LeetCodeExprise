@@ -14,7 +14,7 @@ public class MaxSubString {
 
     public static void main(String[] args) {
         String[] data = {"flow","fly","flower"};
-        String maxPrefix = longestCommonPrefix(data);
+        String maxPrefix = longestCommonPrefixImprove(data);
         System.out.println(maxPrefix);
     }
 
