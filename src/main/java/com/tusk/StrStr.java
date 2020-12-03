@@ -86,7 +86,7 @@ public class StrStr {
      * @return 索引位置
      */
     public static int strStrOffice(String haystack, String needle) {
-        int l = needle.length(), n = haystack.length();
+        int l  = needle.length(), n = haystack.length();
         if (l == 0) return 0;
 
         int pn = 0;
