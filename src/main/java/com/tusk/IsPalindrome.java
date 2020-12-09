@@ -42,7 +42,7 @@ public class IsPalindrome {
 
         //这里也可以通过栈来比较，或者翻转字符串
         for (int i = 0; i < sb.length() / 2; i++) {
-            if (sb.charAt(i) != sb.charAt(s.length() - i - 1)) {
+            if (sb.charAt(i) != sb.charAt(sb.length() - i - 1)) {
                 return false;
             }
         }
