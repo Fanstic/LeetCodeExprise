@@ -2,6 +2,9 @@ package com.tusk;
 
 import com.tusk.model.ListNode;
 
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  * 题号：141，判断链表中是否有环
  *
@@ -37,16 +40,35 @@ public class CheckCircularInLinkList {
          */
 
         //这里快指针肯定比慢指针先到达null，因此，可以略去慢指针是否为 null 的判断
-        while (fast != null){
+        while (fast != null) {
 
             slow = slow.getNext();
             fast = fast.getNext().getNext();
 
-            if(slow == fast){
+            if (slow == fast) {
                 return true;
             }
         }
-            return false;
+        return false;
+    }
+
+    /**
+     * 集合法
+     *
+     * @param head
+     * @return
+     */
+    public static boolean hasCycle(ListNode head) {
+        Set<ListNode> set = new HashSet<>();
+        while (head != null) {
+            if (!set.add(head)) {
+                return true;
+            }
+
+            head = head.getNext();
+        }
+
+        return false;
     }
 }
 
