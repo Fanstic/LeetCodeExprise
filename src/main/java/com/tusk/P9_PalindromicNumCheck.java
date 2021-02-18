@@ -7,7 +7,7 @@ package com.tusk;
  * @desc 判断一个整数是否为回文数
  * @date 2020/11/28 10:26
  */
-public class PalindromicNumCheck {
+public class P9_PalindromicNumCheck {
     public static void main(String[] args) {
 
     }

@@ -12,7 +12,7 @@ import java.util.stream.Stream;
  * 给定一个排序数组，原地删除重复出现的元素，使得每个元素只出现一次，返回移除后数组的新长度
  * @date 2020/11/26 10:58
  */
-public class RemoveDuplicateItem {
+public class P26_RemoveDuplicateItem {
     /**
      * 移除数组中的重复元素
      * 1. 数组有序，则相同元素一定是相邻的

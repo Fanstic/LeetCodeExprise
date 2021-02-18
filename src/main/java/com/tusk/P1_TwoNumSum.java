@@ -12,7 +12,7 @@ import java.util.Random;
  * @author tusk
  * @date 2020/11/23 13:03
  */
-public class TwoNumSum {
+public class P1_TwoNumSum {
     public static void main(String[] args) {
 
         final int MAX_SIZE = 100000;

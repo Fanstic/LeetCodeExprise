@@ -10,7 +10,7 @@ package com.tusk;
  * @desc 二进制求和
  * @date 2020/12/5 12:31
  */
-public class AddBinary {
+public class P67_AddBinary {
     public static void main(String[] args) {
         String s1 = "1010";
         String s2 = "1011";

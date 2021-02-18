@@ -14,7 +14,7 @@ import java.util.LinkedList;
  * @desc
  * @date 2020/12/15 15:46
  */
-public class RemoveNthFromEnd {
+public class P19_RemoveNthFromEnd {
     /**
      * 1. 遍历链表计算长度
      * 2. 计算删除元素位置 target = size - 1 - n

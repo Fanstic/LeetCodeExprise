@@ -9,7 +9,7 @@ package com.tusk;
  * 思考：如果给定字符串为空串，应该返回什么
  * @date 2020/12/2 8:45
  */
-public class StrStr {
+public class P28_StrStr {
 
     public static void main(String[] args) {
         String haystack = "hello";

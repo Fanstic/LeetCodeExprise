@@ -10,7 +10,7 @@ import java.util.Arrays;
  * 元素的顺序可以改变，不需要考虑数组中超出新长度后面的元素
  * @date 2020/12/1 11:06
  */
-public class RemoveElement {
+public class P27_RemoveElement {
 
     public static void main(String[] args) {
         int[] arr = {3, 2, 2, 3};

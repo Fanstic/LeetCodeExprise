@@ -10,7 +10,7 @@ package com.tusk;
  * @desc 加一
  * @date 2020/12/4 8:59
  */
-public class PlusOne {
+public class P66_PlusOne {
 
     public static void main(String[] args) {
         int[] arr = {9};

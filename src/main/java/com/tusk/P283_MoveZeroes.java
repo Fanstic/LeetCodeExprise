@@ -19,7 +19,7 @@ package com.tusk;
  * @desc
  * @date 2020/12/11 10:30
  */
-public class MoveZeroes {
+public class P283_MoveZeroes {
     public static void main(String[] args) {
         int[] arr = {0, 1, 0, 3, 12};
         int[] arr1 = {1, 0, 1};

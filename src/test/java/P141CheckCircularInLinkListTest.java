@@ -1,4 +1,4 @@
-import com.tusk.CheckCircularInLinkList;
+import com.tusk.P141_CheckCircularInLinkList;
 import com.tusk.model.ListNode;
 import org.junit.Assert;
 import org.junit.Test;
@@ -8,7 +8,7 @@ import org.junit.Test;
  * @desc
  * @date 2020/11/26 16:51
  */
-public class CheckCircularInLinkListTest {
+public class P141CheckCircularInLinkListTest {
 
     @Test
     public void test(){
@@ -19,7 +19,7 @@ public class CheckCircularInLinkListTest {
         root1.setNext(node1);
         node1.setNext(root1);
 
-        boolean result1 = CheckCircularInLinkList.check(root1);
+        boolean result1 = P141_CheckCircularInLinkList.check(root1);
 
         Assert.assertTrue(result1);
 
@@ -31,6 +31,6 @@ public class CheckCircularInLinkListTest {
         node2.setNext(node3);
         node3.setNext(root2);
 
-        Assert.assertTrue(CheckCircularInLinkList.check(root2));
+        Assert.assertTrue(P141_CheckCircularInLinkList.check(root2));
     }
 }

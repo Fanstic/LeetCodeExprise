@@ -8,7 +8,7 @@ package com.tusk;
  * @desc 搜索插入位置
  * @date 2020/12/3 9:09
  */
-public class SearchInsertIndex {
+public class P35_SearchInsertIndex {
 
     public static void main(String[] args) {
         int[] arr = {1, 3, 5, 6};

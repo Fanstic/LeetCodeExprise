@@ -14,10 +14,10 @@ import java.util.LinkedList;
 public class ReverseList {
 
     public static void main(String[] args) {
-        RemoveNthFromEnd.ListNode head = new RemoveNthFromEnd.ListNode(1, null);
-        head.next = new RemoveNthFromEnd.ListNode(2, null);
-        head.next.next = new RemoveNthFromEnd.ListNode(3,null);
-        RemoveNthFromEnd.ListNode result = new ReverseList().reverseListV2(head);
+        P19_RemoveNthFromEnd.ListNode head = new P19_RemoveNthFromEnd.ListNode(1, null);
+        head.next = new P19_RemoveNthFromEnd.ListNode(2, null);
+        head.next.next = new P19_RemoveNthFromEnd.ListNode(3,null);
+        P19_RemoveNthFromEnd.ListNode result = new ReverseList().reverseListV2(head);
         while (result != null) {
             System.out.println(result.val);
             result = result.next;
@@ -30,9 +30,9 @@ public class ReverseList {
      * @param head
      * @return
      */
-    public RemoveNthFromEnd.ListNode reverseList(RemoveNthFromEnd.ListNode head) {
+    public P19_RemoveNthFromEnd.ListNode reverseList(P19_RemoveNthFromEnd.ListNode head) {
 
-        Deque<RemoveNthFromEnd.ListNode> stack = new LinkedList<>();
+        Deque<P19_RemoveNthFromEnd.ListNode> stack = new LinkedList<>();
 
         while (head != null) {
             stack.push(head);
@@ -40,10 +40,10 @@ public class ReverseList {
         }
 
 
-        RemoveNthFromEnd.ListNode dumy = new RemoveNthFromEnd.ListNode(0, null);
-        RemoveNthFromEnd.ListNode c = dumy;
+        P19_RemoveNthFromEnd.ListNode dumy = new P19_RemoveNthFromEnd.ListNode(0, null);
+        P19_RemoveNthFromEnd.ListNode c = dumy;
         while (!stack.isEmpty()) {
-            RemoveNthFromEnd.ListNode node = stack.pop();
+            P19_RemoveNthFromEnd.ListNode node = stack.pop();
             node.next = null;//需要将当前栈顶节点next置空，否则会死循环
             c.next = node;
             c = c.next;
@@ -60,14 +60,14 @@ public class ReverseList {
      * @param head
      * @return
      */
-    public RemoveNthFromEnd.ListNode reverseListV1(RemoveNthFromEnd.ListNode head) {
+    public P19_RemoveNthFromEnd.ListNode reverseListV1(P19_RemoveNthFromEnd.ListNode head) {
 
-        RemoveNthFromEnd.ListNode cur = head;
+        P19_RemoveNthFromEnd.ListNode cur = head;
         //前驱
-        RemoveNthFromEnd.ListNode pre = null;
+        P19_RemoveNthFromEnd.ListNode pre = null;
 
         while (cur != null) {
-            RemoveNthFromEnd.ListNode tempNode = cur.next;
+            P19_RemoveNthFromEnd.ListNode tempNode = cur.next;
             cur.next = pre;
             pre = cur;
 
@@ -85,12 +85,12 @@ public class ReverseList {
      * @param head
      * @return
      */
-    public RemoveNthFromEnd.ListNode reverseListV2(RemoveNthFromEnd.ListNode head){
+    public P19_RemoveNthFromEnd.ListNode reverseListV2(P19_RemoveNthFromEnd.ListNode head){
         if (head == null || head.next == null) {
             return head;
         }
         //p当前端的最后一个节点,p 为head的前一个节点
-        RemoveNthFromEnd.ListNode p = reverseListV2(head.next);
+        P19_RemoveNthFromEnd.ListNode p = reverseListV2(head.next);
         head.next.next = head;
         head.next = null;
         return p;

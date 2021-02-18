@@ -23,7 +23,7 @@ import java.util.Arrays;
  * 尽可能想出更多的解决方案，至少有三种不同的方法可以解决这个问题。
  * 要求使用空间复杂度为 O(1) 的 原地 算法。
  */
-public class RotateArray {
+public class P189_RotateArray {
 
     public static void main(String[] args) {
         int[] arr = {1, 2, 3, 4, 5, 6, 7};

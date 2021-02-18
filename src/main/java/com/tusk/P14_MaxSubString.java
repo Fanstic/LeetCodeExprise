@@ -10,7 +10,7 @@ import java.util.Comparator;
  * @desc 编写一个函数来查询字符串数组中的最长公共前缀
  * @date 2020/11/30 9:53
  */
-public class MaxSubString {
+public class P14_MaxSubString {
 
     public static void main(String[] args) {
         String[] data = {"flow","fly","flower"};

@@ -11,7 +11,7 @@ import java.util.Map;
  * @desc 字符串中的第一个唯一字符
  * @date 2020/12/7 13:29
  */
-public class FirstUniqueChar {
+public class P387_FirstUniqueChar {
     public static void main(String[] args) {
         String s = "leetcode";
         String s1 = "loveleetcode";

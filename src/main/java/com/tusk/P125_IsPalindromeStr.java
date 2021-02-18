@@ -8,7 +8,7 @@ package com.tusk;
  * @desc
  * @date 2020/12/9 9:18
  */
-public class IsPalindromeStr {
+public class P125_IsPalindromeStr {
     public static void main(String[] args) {
         String s = "A man, a plan, a canal: Panama";
         String s1 = "race a car";

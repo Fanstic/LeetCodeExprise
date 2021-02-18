@@ -11,7 +11,7 @@ import java.util.LinkedList;
  * 数字，如果将两个数想加，则返回一个新的链表表示它们的和，除了数字0，两个数都不会以0开头
  * @date 2020/11/24 8:37
  */
-public class TwoNumPlus {
+public class P2_TwoNumPlus {
     public static void main(String[] args) {
         ListNode a = new ListNode(1);
         a.setNext(new ListNode(2));

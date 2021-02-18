@@ -10,7 +10,7 @@ import java.util.Arrays;
  * @desc 有效的字母异位词
  * @date 2020/12/8 12:42
  */
-public class AnaGram {
+public class P242_AnaGram {
     public static void main(String[] args) {
         int[] a = {1};
         int[] b = {1};

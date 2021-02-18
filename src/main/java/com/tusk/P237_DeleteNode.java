@@ -2,8 +2,6 @@ package com.tusk;
 
 import com.tusk.model.ListNode;
 
-import javax.sound.midi.Soundbank;
-
 /**
  * 题号237，删除单链表中的节点
  * 请编写一个函数，使其可以删除某个链表中给定的（非末尾）节点。传入函数的唯一参数为 要被删除的节点 。
@@ -18,12 +16,12 @@ import javax.sound.midi.Soundbank;
  * @desc
  * @date 2020/12/14 8:57
  */
-public class DeleteNode {
+public class P237_DeleteNode {
     public static void main(String[] args) {
-        DeleteNode deleteNode = new DeleteNode();
-        deleteNode.deleteNode(new ListNode(1));
+        P237_DeleteNode p237DeleteNode = new P237_DeleteNode();
+        p237DeleteNode.deleteNode(new ListNode(1));
 
-        ListNode node = deleteNode.getHead();
+        ListNode node = p237DeleteNode.getHead();
         while (node!=null){
             System.out.println(node.getVal());
             node = node.getNext();
@@ -37,7 +35,7 @@ public class DeleteNode {
     public ListNode head;
 
 
-    public DeleteNode() {
+    public P237_DeleteNode() {
         head = new ListNode(1);
         ListNode secondNode = new ListNode(2);
         head.setNext(secondNode);

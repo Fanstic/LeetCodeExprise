@@ -12,7 +12,7 @@ package com.tusk;
  * @desc x 的平方根
  * @date 2020/12/4 10:08
  */
-public class MySqrt {
+public class P69_MySqrt {
     public static void main(String[] args) {
         System.out.println(mySqrt(2134567891));
     }

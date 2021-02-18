@@ -33,7 +33,7 @@ import java.util.stream.Stream;
  * @desc
  * @date 2020/12/12 17:59
  */
-public class Intersection2 {
+public class P350_Intersection2 {
     public static void main(String[] args) {
         int[] arr = {4, 9, 5};
         int[] arr1 = {9, 4, 9, 8, 4};

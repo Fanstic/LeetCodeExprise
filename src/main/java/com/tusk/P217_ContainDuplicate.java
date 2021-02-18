@@ -11,7 +11,7 @@ import java.util.Set;
  * @desc
  * @date 2020/12/9 10:29
  */
-public class ContainDuplicate {
+public class P217_ContainDuplicate {
     public static void main(String[] args) {
         int[] arr0 = {1, 3, 3};
         System.out.println(containDuplicateV1(arr0));

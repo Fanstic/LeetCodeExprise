@@ -13,7 +13,7 @@ import java.util.List;
  * @desc 两个数组的交集
  * @date 2020/12/4 15:14
  */
-public class Intersection {
+public class P349_Intersection {
     public static void main(String[] args) {
         int[] arr1 = {1, 2};
         int[] arr2 = {1};

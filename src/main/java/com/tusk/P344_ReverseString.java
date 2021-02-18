@@ -8,7 +8,7 @@ package com.tusk;
  * @desc 字符串反转
  * @date 2020/12/7 13:17
  */
-public class ReverseString {
+public class P344_ReverseString {
 
     public static void main(String[] args) {
         char[] s = {'h'};

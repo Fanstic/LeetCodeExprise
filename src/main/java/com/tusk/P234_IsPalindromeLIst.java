@@ -10,17 +10,17 @@ import java.util.List;
  * @desc
  * @date 2020/12/17 10:08
  */
-public class IsPalindromeLIst {
+public class P234_IsPalindromeLIst {
     public static void main(String[] args) {
-        RemoveNthFromEnd.ListNode head = new RemoveNthFromEnd.ListNode(-129, null);
-        head.next = new RemoveNthFromEnd.ListNode(-129, null);
+        P19_RemoveNthFromEnd.ListNode head = new P19_RemoveNthFromEnd.ListNode(-129, null);
+        head.next = new P19_RemoveNthFromEnd.ListNode(-129, null);
 //        head.next.next = new RemoveNthFromEnd.ListNode(2, null);
 //        head.next.next.next = new RemoveNthFromEnd.ListNode(1, null);
 
         System.out.println(isPalindrome(head));
     }
 
-    public static boolean isPalindrome(RemoveNthFromEnd.ListNode head) {
+    public static boolean isPalindrome(P19_RemoveNthFromEnd.ListNode head) {
         List<Integer> list = new LinkedList<>();
         while (head != null) {
             list.add(head.val);

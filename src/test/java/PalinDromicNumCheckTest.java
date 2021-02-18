@@ -1,4 +1,4 @@
-import com.tusk.PalindromicNumCheck;
+import com.tusk.P9_PalindromicNumCheck;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -17,11 +17,11 @@ public class PalinDromicNumCheckTest {
 
     @Test
     public void test(){
-        Assert.assertFalse(PalindromicNumCheck.check(a));
-        Assert.assertFalse(PalindromicNumCheck.check(b));
-        Assert.assertTrue(PalindromicNumCheck.check(c));
-        Assert.assertTrue(PalindromicNumCheck.check(d));
-        Assert.assertFalse(PalindromicNumCheck.check(e));
+        Assert.assertFalse(P9_PalindromicNumCheck.check(a));
+        Assert.assertFalse(P9_PalindromicNumCheck.check(b));
+        Assert.assertTrue(P9_PalindromicNumCheck.check(c));
+        Assert.assertTrue(P9_PalindromicNumCheck.check(d));
+        Assert.assertFalse(P9_PalindromicNumCheck.check(e));
 
 
     }

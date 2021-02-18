@@ -12,7 +12,7 @@ import java.util.Set;
  * @desc
  * @date 2020/11/26 16:01
  */
-public class CheckCircularInLinkList {
+public class P141_CheckCircularInLinkList {
 
     /**
      * 判断给定链表中是否有环,要考虑各种环的情况，找出各种成环时的临界条件

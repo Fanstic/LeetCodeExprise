@@ -11,7 +11,7 @@ package com.tusk;
  * @desc 爬楼梯
  * @date 2020/12/6 7:46
  */
-public class ClaimbStairs {
+public class P70_ClaimbStairs {
 
     public static void main(String[] args) {
         int n = 45;
