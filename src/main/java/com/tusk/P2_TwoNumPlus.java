@@ -70,6 +70,7 @@ public class P2_TwoNumPlus {
 
             ListNode tempHead = new ListNode(0);
 
+            //生成补位链表
             while (sizeDiff > 0) {
                 tempHead.setNext(new ListNode(0));
                 tempHead = tempHead.getNext();
@@ -77,7 +78,7 @@ public class P2_TwoNumPlus {
             }
 
             //b高位补0
-            if (aSize > bSize) {
+            if (aSize > bSize) {//a链表长度大于b链表,b链表高位补0
                 tempHead.setNext(b);
                 b = tempHead;
             } else {
@@ -97,6 +98,7 @@ public class P2_TwoNumPlus {
                 tail = tail.getNext();
             }
 
+            //计算进位值
             carry = sum / 10;
             if (a != null) {
                 a = a.getNext();
@@ -107,6 +109,7 @@ public class P2_TwoNumPlus {
             }
         }
 
+        //如果最高位计算需要进位，则需要在链表末尾新加一个节点
         if (carry > 0) {
             tail.setNext(new ListNode(carry));
         }
