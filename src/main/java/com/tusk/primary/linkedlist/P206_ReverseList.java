@@ -1,4 +1,4 @@
-package com.tusk;
+package com.tusk.primary.linkedlist;
 
 
 import java.util.Deque;
@@ -11,13 +11,13 @@ import java.util.LinkedList;
  * @desc
  * @date 2020/12/16 10:04
  */
-public class ReverseList {
+public class P206_ReverseList {
 
     public static void main(String[] args) {
         P19_RemoveNthFromEnd.ListNode head = new P19_RemoveNthFromEnd.ListNode(1, null);
         head.next = new P19_RemoveNthFromEnd.ListNode(2, null);
         head.next.next = new P19_RemoveNthFromEnd.ListNode(3,null);
-        P19_RemoveNthFromEnd.ListNode result = new ReverseList().reverseListV2(head);
+        P19_RemoveNthFromEnd.ListNode result = new P206_ReverseList().reverseListV2(head);
         while (result != null) {
             System.out.println(result.val);
             result = result.next;

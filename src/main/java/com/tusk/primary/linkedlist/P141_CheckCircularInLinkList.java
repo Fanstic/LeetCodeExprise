@@ -1,4 +1,4 @@
-package com.tusk;
+package com.tusk.primary.linkedlist;
 
 import com.tusk.model.ListNode;
 

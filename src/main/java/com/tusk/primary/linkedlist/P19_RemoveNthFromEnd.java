@@ -1,4 +1,4 @@
-package com.tusk;
+package com.tusk.primary.linkedlist;
 
 import java.util.LinkedList;
 
@@ -111,7 +111,7 @@ public class P19_RemoveNthFromEnd {
         return dumy.next;
     }
 
-    static class ListNode {
+    public static class ListNode {
         public ListNode next;
         public int val;
 

@@ -1,4 +1,4 @@
-import com.tusk.P141_CheckCircularInLinkList;
+import com.tusk.primary.linkedlist.P141_CheckCircularInLinkList;
 import com.tusk.model.ListNode;
 import org.junit.Assert;
 import org.junit.Test;
