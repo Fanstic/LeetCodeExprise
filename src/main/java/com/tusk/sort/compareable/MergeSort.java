@@ -5,14 +5,17 @@ import java.util.Arrays;
 /**
  * @author tusk
  * @desc 归并排序
+ * 解决思路:分治思想
+ * 将数组持续分割，直至左右两部分的元素个数均为1，然后比较左右两边，将小的一方放入临时数组，比对结束后，将不为空的数组部分接在临时数组的后面
+ * <p>
  * ======================================
  * 最好时间复杂度：O(nlogn)
  * 最坏时间复杂度:O(nlogn)
  * 平均时间复杂度:O(nlogn)
  * 空间复杂度：O(n)
  * 是否稳定: 稳定
- * <p>
  * =======================================
+ * </p>
  * @date 2021/5/12 15:26
  */
 public class MergeSort {
@@ -20,13 +23,14 @@ public class MergeSort {
         MergeSort obj = new MergeSort();
         int[] data = {10, 3, 7, 9, 5, 2, 1, 8, 4, 6};
         int[] result = new int[data.length];
-        obj.sort_recursive(data, result, 0, data.length - 1);
-
-        System.out.println(Arrays.toString(result));
+//        obj.sort_recursive(data, result, 0, data.length - 1);
+        obj.sort_iteration(data);
+        System.out.println(Arrays.toString(data));
     }
 
     /**
      * 递归法
+     *
      * @param data
      * @param result
      * @param start
@@ -69,5 +73,42 @@ public class MergeSort {
             data[k] = result[k];
         }
 
+    }
+
+    /**
+     * 迭代法
+     * @param data
+     */
+    public void sort_iteration(int[] data) {
+        int len = data.length;
+        int[] result = new int[len];
+        int block, start;
+
+        for (block = 1; block < len * 2; block *= 2) {
+            for (start = 0; start < len; start += 2 * block) {
+                int low = start;
+                int mid = Math.min((start + block), len);
+                int high = Math.min((start + 2 * block), len);
+                //两个块的起始下标及结束下标
+                int start1 = low, end1 = mid;
+                int start2 = mid, end2 = high;
+                //开始对两个block进行归并排序
+                while (start1 < end1 && start2 < end2) {
+                    result[low++] = data[start1] < data[start2] ? data[start1++] : data[start2++];
+                }
+                while (start1 < end1) {
+                    result[low++] = data[start1++];
+                }
+                while (start2 < end2) {
+                    result[low++] = data[start2++];
+                }
+
+//                System.out.println(Arrays.toString(result));
+            }
+            int[] temp = data;
+            data = result;
+            result = temp;
+        }
+//        result = data;
     }
 }
