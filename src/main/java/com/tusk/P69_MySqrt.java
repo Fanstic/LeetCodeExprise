@@ -14,8 +14,11 @@ package com.tusk;
  */
 public class P69_MySqrt {
     public static void main(String[] args) {
-        System.out.println(mySqrt(2134567891));
+//        System.out.println(mySqrt(35));
+        System.out.println(mySqrt(10,0.00000001));
+        System.out.println(Math.sqrt(10));
     }
+
 
     /**
      * 二分查找法
@@ -42,5 +45,21 @@ public class P69_MySqrt {
             }
         }
         return ans;
+    }
+
+    /**
+     * 牛顿法求平方根
+     *
+     * @param x
+     * @param scale 精度
+     * @return
+     */
+    public static double mySqrt(int x, double scale) {
+        double k = 1.0;
+        while (Math.abs(k*k - x) > scale) {
+            k = (k + x / k) / 2.0;
+        }
+
+        return k;
     }
 }
