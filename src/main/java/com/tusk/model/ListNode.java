@@ -1,11 +1,13 @@
 package com.tusk.model;
 
+import java.lang.reflect.WildcardType;
+
 /**
  * 链表节点
  */
 public class ListNode {
-    private int val;
-    private ListNode next;
+    public int val;
+    public ListNode next;
 
     public ListNode(int v) {
         val = v;
@@ -42,4 +44,6 @@ public class ListNode {
 
         return count;
     }
+
+
 }
