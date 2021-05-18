@@ -7,7 +7,7 @@ import com.tusk.model.ListNode;
  * @desc 单链表的中间节点
  * @date 2021/5/9 8:49
  */
-public class MidleNode {
+public class P876_MidleNode {
     public static void main(String[] args) {
 
     }
