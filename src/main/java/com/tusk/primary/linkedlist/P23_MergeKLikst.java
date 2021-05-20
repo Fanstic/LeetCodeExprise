@@ -1,7 +1,9 @@
 package com.tusk.primary.linkedlist;
 
-import com.sun.xml.internal.bind.v2.TODO;
 import com.tusk.model.ListNode;
+
+import java.util.Comparator;
+import java.util.PriorityQueue;
 
 /**
  * @author tusk
@@ -36,7 +38,7 @@ public class P23_MergeKLikst {
         ListNode l2 = new ListNode(1, new ListNode(3));
         ListNode l3 = new ListNode(3, new ListNode(8));
 
-        ListNode l4 = obj.mergeKList(new ListNode[]{l1, l2, l3});
+        ListNode l4 = obj.merge01(new ListNode[]{l1, l2, l3});
         System.out.println(l4.toString());
     }
 
@@ -109,5 +111,32 @@ public class P23_MergeKLikst {
         return mergeList(merge(lists, 1, mid), merge(lists, mid + 1, right));
     }
 
-   //TODO:解决方案三，优先队列合并
+    //TODO:解决方案三，优先队列合并
+
+    /**
+     * 优先级队列法，假如有 k 个有序列表，每次取出未合并元素中最前面的那个，然后从中找出最小的那个合并到结果链表中
+     *
+     * @param lists
+     * @return
+     */
+    public ListNode merge01(ListNode[] lists) {
+        PriorityQueue<ListNode> pbq = new PriorityQueue<>(Comparator.comparingInt(a -> a.val));
+        ListNode head = new ListNode(0);
+        ListNode p = head;
+
+        for (ListNode node : lists) {
+            pbq.add(node);
+        }
+
+        while (!pbq.isEmpty()) {
+            p.next = pbq.poll();
+            p = p.next;
+
+            if (p.next != null) {
+                pbq.add(p.next);
+            }
+        }
+
+        return head.next;
+    }
 }
