@@ -111,8 +111,6 @@ public class P23_MergeKLikst {
         return mergeList(merge(lists, 1, mid), merge(lists, mid + 1, right));
     }
 
-    //TODO:解决方案三，优先队列合并
-
     /**
      * 优先级队列法，假如有 k 个有序列表，每次取出未合并元素中最前面的那个，然后从中找出最小的那个合并到结果链表中
      *
