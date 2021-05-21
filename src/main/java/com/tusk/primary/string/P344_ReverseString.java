@@ -1,4 +1,4 @@
-package com.tusk;
+package com.tusk.primary.string;
 
 /**
  * 题号344，字符串反转
