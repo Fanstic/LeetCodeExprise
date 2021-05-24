@@ -250,6 +250,19 @@ public class BinaryTree {
         }
     }
 
+    //TODO:在查找二叉树中删除 key 指定的节点
+
+    /**
+     * 在查找二叉树中删除 key 指定的节点
+     *
+     * @param root
+     * @param key
+     * @return
+     */
+    public static BinaryTreeNode del(BinaryTreeNode root, int key) {
+        return null;
+    }
+
     private static BinaryTreeNode insertInternal(BinaryTreeNode root, int key) {
 
         if (key < root.key) {
