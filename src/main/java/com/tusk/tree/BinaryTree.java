@@ -15,11 +15,15 @@ public class BinaryTree {
 //        int[] pre = new int[]{1, 2, 4, 7, 3, 5, 6, 8};
 //        int[] mid = new int[]{4, 7, 2, 1, 5, 3, 8, 6};
 
-        int[] pre = new int[]{5, 4, 3, 2, 1, 6, 7, 8, 11};
-        int[] mid = new int[]{1, 2, 3, 4, 5, 6, 7, 8, 11};
+//        int[] pre = new int[]{5, 4, 3, 2, 1, 6, 7, 8, 11};
+//        int[] mid = new int[]{1, 2, 3, 4, 5, 6, 7, 8, 11};
+
+        int[] pre = new int[]{40,20,70,60,75,71,73};
+        int[] mid = new int[]{20,40,60,70,71,73,75};
 
         BinaryTreeNode root = PM(pre, mid, pre.length);
 //        insert(root, 9);
+        del(root,40);
         levelTraversal(root);
 
 
@@ -254,13 +258,135 @@ public class BinaryTree {
 
     /**
      * 在查找二叉树中删除 key 指定的节点
+     * 参考：https://www.cnblogs.com/xfgnongmin/p/10860492.html
      *
      * @param root
      * @param key
      * @return
      */
-    public static BinaryTreeNode del(BinaryTreeNode root, int key) {
-        return null;
+    public static void del(BinaryTreeNode root, int key) {
+        if (root == null) {
+            return;
+        }
+
+        //记录当前节点的父节点
+        BinaryTreeNode p = null;
+
+        //记录当前节点
+        BinaryTreeNode next = root;
+
+        //记录目标节点
+        BinaryTreeNode target = null;
+
+        if (root.key == key) {
+            target = root;
+        } else {
+            //查找要删除的节点及其父节点
+            while (next != null) {
+                if (key < next.key) {
+                    p = next;
+                    next = next.left;
+                } else if (key > next.key) {
+                    p = next;
+                    next = next.right;
+                } else {
+                    target = next;
+                    break;
+                }
+            }
+        }
+
+        if (target != null) {
+            if (target.left == null) {
+                if (target.right == null) {
+                    //即目标节点为 root 节点，并且为树中的唯一节点，直接将当前节点清空
+                    if (p == null) {
+                        root = null;
+
+                    } else {
+                        //目标节点为叶子节点
+                        if (p.left == target) {
+                            p.left = null;
+                        } else {
+                            p.right = null;
+                        }
+                    }
+                } else {
+                    if(p == null){
+                        target = target.right;
+                    }else{
+                        if(p.left == target){
+                            p.left = target.right;
+                        }else{
+                            p.right = target.right;
+                        }
+                    }
+
+                }
+            } else {
+                if (target.right == null) {
+                    if (p == null) {
+                        root = root.left;
+                    } else {
+                        if (p.left == target) {
+                            p.left = target.left;
+                        } else {
+                            p.right = target.left;
+                        }
+                    }
+
+                } else {
+                    //左右节点都不为空，需要找到比目标节点大的所有节点中的最小节点,即中继后续节点,来替换当前节点
+                    //(或比目标节点小的所有节点中的最大值节点)
+                    //中继后续节点即当前节点的右子树的最左节点，因此，中继后续节点一定没有左孩子
+
+                    BinaryTreeNode relayTreeNode = getRelayNextNode(target);
+
+                    if(target == root){
+                        root = relayTreeNode;
+                    }else if(p.left == target){
+                        p.left = relayTreeNode;
+                    }else{
+                        p.right = relayTreeNode;
+                    }
+
+                    relayTreeNode.left = target.left;
+
+                }
+            }
+        }
+    }
+
+    /**
+     * 获取指定节点的中继后续节点
+     *
+     * @param node
+     * @return
+     */
+    private static BinaryTreeNode getRelayNextNode(BinaryTreeNode node) {
+        BinaryTreeNode cur = node.right;
+        BinaryTreeNode p = null;
+        BinaryTreeNode relayNode = cur;
+
+        while (cur != null) {
+            p = cur;
+            relayNode = cur;
+            cur = cur.left;
+        }
+
+        if(relayNode!=node.right){
+            //将中继后续节点的孩子节点替补到中继后续节点上,中继后续节点没有左孩子，因此将右孩子替补上去
+            p.left = relayNode.right;
+
+            //将被删除节点的右孩子连接到中继节点的右孩子上
+            relayNode.right = node.right;
+
+            //将被删除节点的左孩子连接到中继节点的左孩子上
+//        relayNode.left = node.left;
+        }
+
+
+        return relayNode;
     }
 
     private static BinaryTreeNode insertInternal(BinaryTreeNode root, int key) {
