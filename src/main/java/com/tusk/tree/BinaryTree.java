@@ -18,14 +18,13 @@ public class BinaryTree {
 //        int[] pre = new int[]{5, 4, 3, 2, 1, 6, 7, 8, 11};
 //        int[] mid = new int[]{1, 2, 3, 4, 5, 6, 7, 8, 11};
 
-        int[] pre = new int[]{40,20,70,60,75,71,73};
-        int[] mid = new int[]{20,40,60,70,71,73,75};
+        int[] pre = new int[]{40, 20, 70, 60, 75, 71, 73};
+        int[] mid = new int[]{20, 40, 60, 70, 71, 73, 75};
 
         BinaryTreeNode root = PM(pre, mid, pre.length);
 //        insert(root, 9);
-        del(root,40);
-        levelTraversal(root);
-
+        midOrderTraversal(root);
+        System.out.println(getNext(root, 40).key);
 
     }
 
@@ -179,31 +178,139 @@ public class BinaryTree {
     }
 
 
-    //TODO:获取 key 在 二叉树 root 中的前驱节点
-
     /**
-     * 获取 key 在 二叉树 root 中的前驱节点
+     * 获取 key 在 二叉树 root 中的前驱节点(中序遍历序列中当前元素的前一个元素)
+     * 1. 当前节点左子树不为空，则前驱为左子树中的最右节点
+     * 2. 当前节点左子树为空
+     * 2.1 当前节点为父节点的右孩子，则前驱节点为当前节点的父节点
+     * 2.2 当前节点为父节点的左孩子，则前驱节点为当前节点的父节点的最近父节点，即当前节点的最近祖父节点
      *
      * @param root
      * @param key
-     * @param triversaltype 遍历的类型
      * @return
      */
-    public static BinaryTreeNode getPre(BinaryTreeNode root, int key, TRIVERSALTYPE triversaltype) {
+    public static BinaryTreeNode getPre(BinaryTreeNode root, int key) {
+        if (root == null) {
+            return null;
+        }
+
+        BinaryTreeNode cur = null;
+        BinaryTreeNode p = null;
+        BinaryTreeNode next = root;
+
+        while (next != null) {
+            if (next.key == key) {
+                cur = next;
+                break;
+            } else if (key < next.key) {
+                p = next;
+                next = next.left;
+            } else {
+                p = next;
+                next = next.right;
+            }
+        }
+
+        if (cur.left == null) {
+            //左孩子为 null，且当前节点为父节点的右孩子，前驱节点为当前节点的父节点
+            if (p != null && p.right == cur) {
+                return p;
+            } else if (p != null && p.left == cur) {
+                //左孩子为null，且当前节点为父节点的右孩子，则前驱节点为当前节点的最近祖父节点
+                next = root;
+                cur = p;
+                while (next != null) {
+                    if (next.key == cur.key) {
+//                        p = next;
+                        break;
+                    } else if (cur.key < next.key) {
+                        p = next;
+                        next = next.left;
+                    } else {
+                        p = next;
+                        next = next.right;
+                    }
+                }
+
+                return p;
+            }
+        } else {
+            next = cur.left;
+            while (next.right != null) {
+                next = next.right;
+            }
+
+            return next;
+        }
+
         return null;
     }
 
-    //TODO:获取 key 在二叉树 root 中的后继节点
-
     /**
-     * 获取 key 在二叉树 root 中的后继节点
+     * 获取 key 在二叉树 root 中的后继节点(中序遍历序列)
+     * 1. 如果当前节点的右子树不为null，则后继节点便为右子树的最左节点
+     * 2. 如果当前节点的右子树为null
+     * 2.1 如果当前节点为父节点的左孩子，则后继节点为当前节点的父节点
+     * 2.2 如果当前节点为父节点的右孩子，则后继节点为当前节点父节点的父节点，即当前节点的最近祖父节点
      *
      * @param root
      * @param key
-     * @param triversaltype 遍历类型
      * @return
      */
-    public static BinaryTreeNode getNext(BinaryTreeNode root, int key, TRIVERSALTYPE triversaltype) {
+    public static BinaryTreeNode getNext(BinaryTreeNode root, int key) {
+        if (root == null) {
+            return null;
+        }
+
+        BinaryTreeNode p = null;
+        BinaryTreeNode cur = null;
+        BinaryTreeNode next = root;
+
+        while (next != null) {
+            if (next.key == key) {
+                cur = next;
+                break;
+            } else if (key < next.key) {
+                p = next;
+                next = next.left;
+            } else {
+                p = next;
+                next = next.right;
+            }
+        }
+
+        if (cur != null) {
+            if (cur.right != null) {
+                next = cur.right;
+                while (next.left != null) {
+                    next = next.left;
+                }
+
+                return next;
+            } else {
+                if (p != null && cur == p.left) {
+                    return p;
+                } else {
+                    cur = p;
+                    next = root;
+                    p = null;
+                    while (next != null) {
+                        if (cur.key == next.key) {
+                            break;
+                        } else if (cur.key < next.key) {
+                            p = next;
+                            next = next.left;
+                        } else {
+                            p = next;
+                            next = next.right;
+                        }
+                    }
+
+                    return p;
+                }
+            }
+        }
+
         return null;
     }
 
@@ -312,12 +419,12 @@ public class BinaryTree {
                         }
                     }
                 } else {
-                    if(p == null){
+                    if (p == null) {
                         target = target.right;
-                    }else{
-                        if(p.left == target){
+                    } else {
+                        if (p.left == target) {
                             p.left = target.right;
-                        }else{
+                        } else {
                             p.right = target.right;
                         }
                     }
@@ -342,11 +449,11 @@ public class BinaryTree {
 
                     BinaryTreeNode relayTreeNode = getRelayNextNode(target);
 
-                    if(target == root){
+                    if (target == root) {
                         root = relayTreeNode;
-                    }else if(p.left == target){
+                    } else if (p.left == target) {
                         p.left = relayTreeNode;
-                    }else{
+                    } else {
                         p.right = relayTreeNode;
                     }
 
@@ -374,7 +481,7 @@ public class BinaryTree {
             cur = cur.left;
         }
 
-        if(relayNode!=node.right){
+        if (relayNode != node.right) {
             //将中继后续节点的孩子节点替补到中继后续节点上,中继后续节点没有左孩子，因此将右孩子替补上去
             p.left = relayNode.right;
 
