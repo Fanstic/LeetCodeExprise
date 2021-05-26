@@ -23,8 +23,9 @@ public class BinaryTree {
 
         BinaryTreeNode root = PM(pre, mid, pre.length);
 //        insert(root, 9);
-        midOrderTraversal(root);
-        System.out.println(getNext(root, 40).key);
+//        midOrderTraversal(root);
+//        System.out.println(getNext(root, 40).key);
+        System.out.println(maxDepth(root));
 
     }
 
@@ -462,6 +463,16 @@ public class BinaryTree {
                 }
             }
         }
+    }
+
+    /**
+     * 获取二叉树的深度
+     *
+     * @param root
+     * @return
+     */
+    public static int maxDepth(BinaryTreeNode root) {
+        return P104_MaxDepth.maxDepth(root);
     }
 
     /**
