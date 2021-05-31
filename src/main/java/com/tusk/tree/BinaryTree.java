@@ -25,7 +25,8 @@ public class BinaryTree {
 //        insert(root, 9);
 //        midOrderTraversal(root);
 //        System.out.println(getNext(root, 40).key);
-        System.out.println(maxDepth(root));
+//        System.out.println(maxDepth(root));
+
 
     }
 
