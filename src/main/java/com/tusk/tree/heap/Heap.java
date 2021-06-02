@@ -31,7 +31,7 @@ public class Heap {
         count = 0;
     }
 
-    //TODO:堆排序，不是很理解
+
     /**
      * 构建堆
      * 时间复杂度O(n)
@@ -73,6 +73,7 @@ public class Heap {
         }
     }
 
+    //TODO:堆排序，不是很理解
     /**
      * 堆排序
      * 时间复杂度：O(nlogN)
