@@ -1,5 +1,8 @@
 package com.tusk.primary.array;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * @author tusk
  * @desc 给定一个二进制数组 nums , 找到含有相同数量的 0 和 1 的最长连续子数组，并返回该子数组的长度。
@@ -25,7 +28,7 @@ package com.tusk.primary.array;
 public class P525_findMaxLength {
     public static void main(String[] args) {
         P525_findMaxLength obj = new P525_findMaxLength();
-        int[] nums = new int[]{0,0,1,0,0,0,1,1};
+        int[] nums = new int[]{0, 0, 1, 0, 0, 0, 1, 1};
         System.out.println(obj.findMaxLength(nums));
     }
 
@@ -76,5 +79,33 @@ public class P525_findMaxLength {
             }
         }
         return 0;
+    }
+
+    public int findMaxLengthOffice(int[] nums) {
+        int len = nums.length;
+        int maxLength = 0;
+        int counter = 0;
+
+        Map<Integer, Integer> map = new HashMap<>();
+
+        //空的前缀前缀和为0
+        map.put(counter, -1);
+
+        for (int i = 0; i < len; i++) {
+            if (nums[i] == 1) {
+                counter++;
+            } else {
+                counter--;
+            }
+
+            if(map.containsKey(counter)){
+                int prevIndex = map.get(counter);
+                maxLength = Math.max(prevIndex, i);
+            }else{
+                map.put(counter,i);
+            }
+        }
+
+        return maxLength;
     }
 }
