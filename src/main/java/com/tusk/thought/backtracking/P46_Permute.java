@@ -41,21 +41,30 @@ public class P46_Permute {
     //TODO:回溯算法求全排列，不理解
     /**
      * 回溯算法
+     * https://www.bilibili.com/video/BV1P5411N7Xc?t=840
+     *
      * @param nums
      * @param used
-     * @param solation
+     * @param solution
      * @param result
      */
-    public void backtrack(int[] nums, int[] used, LinkedList<Integer> solation, List<List<Integer>> result) {
-        if (solation.size() == nums.length) {
-            result.add(new LinkedList<>(solation));
+    public void backtrack(int[] nums, int[] used, LinkedList<Integer> solution, List<List<Integer>> result) {
+        //到达叶子节点，将路径装入全排列列表
+        if (solution.size() == nums.length) {
+            result.add(new LinkedList<>(solution));
         } else {
             for (int i = 0; i < nums.length; i++) {
-                if (used[i] == 0) {
+                if (used[i] == 1) {
+                    continue;
+                } else {
+                    //做选择
                     used[i] = 1;
-                    solation.offerFirst(nums[i]);
-                    backtrack(nums, used, solation, result);
-                    solation.pollFirst();
+                    solution.offerFirst(nums[i]);
+                    //进入下一次决策树
+                    backtrack(nums, used, solution, result);
+
+                    //撤销选择
+                    solution.pollFirst();
                     used[i] = 0;
                 }
             }
@@ -63,10 +72,13 @@ public class P46_Permute {
     }
 
     public List<List<Integer>> permute(int[] nums) {
-        LinkedList<Integer> solation = new LinkedList<>();
+        //存储单次全排列
+        LinkedList<Integer> solatiou = new LinkedList<>();
+        //存储所有全排列
         List<List<Integer>> result = new ArrayList<>();
+        //记录节点是否已访问
         int[] used = new int[nums.length];
-        backtrack(nums, used, solation, result);
+        backtrack(nums, used, solatiou, result);
         return result;
     }
 }
