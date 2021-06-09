@@ -1,6 +1,7 @@
 package com.tusk.thought.backtracking;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -30,7 +31,7 @@ import java.util.List;
  */
 public class P46_Permute {
     public static void main(String[] args) {
-        int[] nums = new int[]{1, 2, 3};
+        int[] nums = new int[]{1, 2, 1};
 
 
         P46_Permute obj = new P46_Permute();
@@ -42,26 +43,26 @@ public class P46_Permute {
     /**
      * 回溯算法
      * https://www.bilibili.com/video/BV1P5411N7Xc?t=840
-     *
+     *思考：如果数组中存在重复元素怎么处理？
      * @param nums
      * @param used
      * @param solution
      * @param result
      */
-    public void backtrack(int[] nums, int[] used, LinkedList<Integer> solution, List<List<Integer>> result) {
+    public void backtrack(int[] nums, int[] used, LinkedList<Integer> solution, List<List<Integer>> result,boolean containDuplication) {
         //到达叶子节点，将路径装入全排列列表
         if (solution.size() == nums.length) {
             result.add(new LinkedList<>(solution));
         } else {
             for (int i = 0; i < nums.length; i++) {
-                if (used[i] == 1) {
+                if (used[i] == 1 || (i>0&&nums[i] == nums[i - 1]&&used[i - 1] == 0)) {
                     continue;
                 } else {
                     //做选择
                     used[i] = 1;
                     solution.offerFirst(nums[i]);
                     //进入下一次决策树
-                    backtrack(nums, used, solution, result);
+                    backtrack(nums, used, solution, result,containDuplication);
 
                     //撤销选择
                     solution.pollFirst();
@@ -72,13 +73,20 @@ public class P46_Permute {
     }
 
     public List<List<Integer>> permute(int[] nums) {
+       return permute(nums,true);
+    }
+
+    public List<List<Integer>> permute(int[] nums,boolean dealDepulication){
         //存储单次全排列
         LinkedList<Integer> solatiou = new LinkedList<>();
         //存储所有全排列
         List<List<Integer>> result = new ArrayList<>();
         //记录节点是否已访问
         int[] used = new int[nums.length];
-        backtrack(nums, used, solatiou, result);
+        if(dealDepulication){
+            Arrays.sort(nums);
+        }
+        backtrack(nums, used, solatiou, result,dealDepulication);
         return result;
     }
 }
