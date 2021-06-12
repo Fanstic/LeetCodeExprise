@@ -1,9 +1,6 @@
 package com.tusk.primary.array;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 /**
  * @author tusk
@@ -37,11 +34,9 @@ public class P15_ThreeSum {
     public static void main(String[] args) {
         P15_ThreeSum obj = new P15_ThreeSum();
         int[] nums = {-1, 0, 1, 2, -1, -4};
-        List<List<Integer>> result = obj.threeSum(nums);
+//        List<List<Integer>> result = obj.threeSum(nums);
 
-        for (List<Integer> lst : result) {
-            System.out.println(Arrays.toString(lst.stream().toArray()));
-        }
+        System.out.println(new solution_01().threeSum(nums));
     }
 
     public List<List<Integer>> threeSum(int[] nums) {
@@ -82,5 +77,60 @@ public class P15_ThreeSum {
             }
         }
         return ans;
+    }
+}
+
+class solution_01 {
+    List<List<Integer>> result = new ArrayList<>();
+
+    public List<List<Integer>> threeSum(int[] nums) {
+
+        if (nums.length == 0) {
+            return new ArrayList<>();
+        }
+
+        Set<Integer> set = new HashSet<>();
+
+
+        Arrays.sort(nums);
+
+        for (int i = 0; i < nums.length; i++) {
+            int target = -nums[i];
+
+            if (set.contains(target)) {
+                continue;
+            } else {
+                set.add(target);
+            }
+            int low = i + 1;
+            int high = nums.length - 1;
+            while (low < high) {
+
+                int left = nums[low];
+                int right = nums[high];
+                int sum = left + right;
+
+                if (sum < target) {
+                    while (low < high && left == nums[low]) {
+                        low++;
+                    }
+                } else if (sum > target) {
+                    while (low < high && right == nums[high]) {
+                        high--;
+                    }
+                } else {
+                    result.add(Arrays.asList(nums[i], nums[low], nums[high]));
+                    while (low < high && left == nums[low]) {
+                        low++;
+                    }
+                    while (low < high && right == nums[high]) {
+                        high--;
+                    }
+                }
+            }
+        }
+
+        return result;
+
     }
 }
