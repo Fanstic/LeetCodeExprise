@@ -39,6 +39,7 @@ package com.tusk.thought.dp;
 public class P5_LongestPalindrome {
     public static void main(String[] args) {
         P5_LongestPalindrome obj = new P5_LongestPalindrome();
+        System.out.println(obj.longestPalindrome("cbbd"));
     }
 
     /**
@@ -48,6 +49,48 @@ public class P5_LongestPalindrome {
      * @return
      */
     public String longestPalindrome(String s) {
-        return "";
+        int len = s.length();
+        if (len < 2) {
+            return s;
+        }
+        char[] charArr = s.toCharArray();
+        boolean[][] dp = new boolean[len][len];
+
+        int maxLen = 1;
+        int begin = 0;
+        for (int i = 0; i < len; i++) {
+            dp[i][i] = true;
+        }
+
+        //遍历回文串的长度
+        for (int L = 2; L <= len; L++) {
+            for (int i = 0; i < len; i++) {
+                int j = i + L - 1;
+
+                if(j>=len){
+                    break;
+                }
+                //首尾字符不同一定不是回文串
+                if (charArr[i] != charArr[j]) {
+                    dp[i][j] = false;
+                } else {
+                    //长度小于3,首尾字符相同一定是回文串
+                    if (L < 3) {
+                        dp[i][j] = true;
+                    } else {
+                        //首尾字符相同，如果去除首尾字符仍然为回文则为回文，否则不是回文
+                        dp[i][j] = dp[i + 1][j - 1];
+                    }
+                }
+
+                //如果 i~j问回文字符串且当前子串长度大于最大回文子串长度
+                if (dp[i][j] && L > maxLen) {
+                    begin = i;
+                    maxLen = L;
+                }
+            }
+        }
+
+        return s.substring(begin, begin + maxLen);
     }
 }
