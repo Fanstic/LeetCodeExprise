@@ -1,5 +1,7 @@
 package com.tusk.thought.dp;
 
+import java.util.Arrays;
+
 /**
  * @author tusk
  * @desc 不同的路径
@@ -72,14 +74,36 @@ public class P62_UniquePaths {
     /**
      * 优化上面的解决方案
      * 上面的解法空间复杂度为 O(mn)，可以使用滑动数组进行优化
+     *
      * @param m
      * @param n
      * @return
      */
     public int uniquePaths01(int m, int n) {
-        int len = Math.min(m, n);
+        int[][] dp = new int[2][n];
 
-        int[][] dp = new int[2][len];
-        return 0;
+        for (int i = 0; i < n; i++) {
+            dp[0][i] = 1;
+        }
+
+        dp[1][0] = 1;
+
+        for (int i = 1; i < m; i++) {
+            for (int j = 1; j < n; j++) {
+                dp[i % 2][j] = dp[(i - 1) % 2][j] + dp[i % 2][j - 1];
+            }
+        }
+
+        return m%2 == 0?dp[1][n-1]:dp[0][n - 1];
+    }
+
+    /**
+     * mod 优化
+     * @param x
+     * @param y
+     * @return
+     */
+    public int mod(int x,int y){
+        return x - x*(x/y);
     }
 }
