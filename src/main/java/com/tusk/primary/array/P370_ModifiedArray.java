@@ -12,9 +12,13 @@ import java.util.Arrays;
  * 解释一下差分数组：diff[i] = nums[i] - nums[i-1],
  * 根据差分数组可以推断出原来的数组：nums[i]=nums[i-1] + diff[i],
  * 如果要对原数组 [start,end]的元素执行inc的更新操作，相当于是在差分数组上执行如下的操作
- * diff[start]+=inc,diff[end+1]-=inc
+ * diff[start]+=inc,
+ * diff[end+1]-=inc(如果end+1>=length,则表示对数组中的所有元素执行操作，无效执行这一步
  * <p>
  * 通过此种方式，可以将此需求下常规操作的 O(N)的处理转换为O(1)的操作
+ *
+ * 类似的题目:leetcode-1109:航班预订统计
+ * leetcode-1094:拼车
  * @date 2021/12/8 9:39
  */
 public class P370_ModifiedArray {
@@ -41,6 +45,7 @@ public class P370_ModifiedArray {
             int inc = arr[2];
 
             diff[start] += inc;
+            if(end+1<length)
             diff[end + 1] -= inc;
         }
 
