@@ -5,6 +5,8 @@ package com.tusk.primary.array;
  * @desc leetcode-304:二维区域和校验-矩阵不可变
  * 同样是前缀和方法,二维可以认为是多个一维的组合
  * https://leetcode-cn.com/problems/range-sum-query-2d-immutable/
+ *
+ * 解题思路：组合使用一维数组的前缀和
  * @date 2021/12/7 14:38
  */
 public class P304_NumMatrix {
