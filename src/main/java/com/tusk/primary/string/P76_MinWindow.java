@@ -48,36 +48,74 @@ public class P76_MinWindow {
     public static void main(String[] args) {
         P76_MinWindow obj = new P76_MinWindow();
 
-        String s = "ADOBECODEBANC";
+        String s = "AADOBECCCBODEBANC";
         String t = "ABC";
+
+        System.out.println(obj.minWindow(s, t));
     }
 
     public String minWindow(String s, String t) {
+
+        //需要匹配的字符以及出现的次数
         Map<Character, Integer> needs = new HashMap<>();
+
+        //滑动窗口中匹配的字符及出现的次数
         Map<Character, Integer> window = new HashMap<>();
 
         //记录窗口的左右边界[left,right)
         int left = 0;
         int right = 0;
 
-        for (Character c : s.toCharArray()) {
+        //最小覆盖子串的长度
+        int len = Integer.MAX_VALUE;
+
+        //最小覆盖子串的起始索引值
+        int start = 0;
+
+        //记录窗口中满足条件的字符个数
+        int valid = 0;
+
+        for (Character c : t.toCharArray()) {
             needs.put(c, needs.getOrDefault(c, 0) + 1);
         }
 
         while (right < s.length()) {
-            Character c = s.charAt(left);
-
-            if (window.isEmpty()) {
-                if (needs.containsKey(c)) {
-                    window.put(c, window.getOrDefault(c, 0) + 1);
-                }
-            } else {
+            Character c = s.charAt(right);
+            right++;
+            if (needs.containsKey(c)) {
                 window.put(c, window.getOrDefault(c, 0) + 1);
+
+                if (needs.get(c).equals(window.get(c))) {
+                    valid++;
+                }
             }
 
+            //如果满足条件则增加左边界，缩小窗口
+            while (valid == needs.size()) {
 
-            right++;
+                //更新最小覆盖子串
+                if (right - left < len) {
+                    start = left;
+                    len = right - left;
+                }
+
+                //将要移出窗口的字符
+                char cur = s.charAt(left);
+                left++;
+
+                if (needs.containsKey(cur)) {
+                    //valid记录窗口中满足条件的个数，当前字符满足条件移出窗口后，valid减1
+                    if (needs.get(cur).equals(window.get(cur))) {
+                        valid--;
+                    }
+
+                    window.put(cur, window.get(cur) - 1);
+                }
+            }
+
         }
-        return "";
+
+
+        return len == Integer.MAX_VALUE ? "" : s.substring(start, len);
     }
 }
