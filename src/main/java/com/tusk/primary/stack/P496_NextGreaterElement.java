@@ -24,6 +24,8 @@ import java.util.*;
  * 来源：力扣（LeetCode）
  * 链接：https://leetcode-cn.com/problems/next-greater-element-i
  * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+ *
+ * 处理思路：单调栈
  * @date 2021/5/9 20:45
  */
 public class P496_NextGreaterElement {
