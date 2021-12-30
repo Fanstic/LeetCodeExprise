@@ -1,5 +1,7 @@
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
+import java.util.PriorityQueue;
 
 /**
  * @author tusk
@@ -8,9 +10,15 @@ import java.util.LinkedHashSet;
  */
 public class Test {
     public static void main(String[] args) {
-        LinkedHashSet<Integer> set = new LinkedHashSet<>();
-        set.add(1);
-        set.add(2);
-        System.out.println("");
+        PriorityQueue<Integer> minQue = new PriorityQueue<>((a, b) -> b - a);
+
+        minQue.offer(2);
+        minQue.offer(1);
+        minQue.offer(0);
+        minQue.offer(5);
+
+        while (!minQue.isEmpty()){
+            System.out.println(minQue.poll());
+        }
     }
 }
