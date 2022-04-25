@@ -8,6 +8,8 @@ import java.util.Arrays;
  * @author tusk
  * @desc 给定一个数组 nums 和一个值 val，原地移除所有等于 val 的元素，并且返回溢出后数组的长度
  * 元素的顺序可以改变，不需要考虑数组中超出新长度后面的元素
+ *
+ * 解题思路：双指针，快慢指针
  * @date 2020/12/1 11:06
  */
 public class P27_RemoveElement {

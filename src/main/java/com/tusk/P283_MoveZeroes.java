@@ -14,7 +14,7 @@ package com.tusk;
  * 尽量减少操作次数。
  * <p>
  * 链接：https://leetcode-cn.com/leetbook/read/top-interview-questions-easy/x2ba4i/
- *
+ *解题思路：双指针，快慢指针，相当于是移除0后超出数组长度的置0
  * @author tusk
  * @desc
  * @date 2020/12/11 10:30

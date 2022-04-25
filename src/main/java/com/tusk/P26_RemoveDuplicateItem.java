@@ -10,6 +10,8 @@ import java.util.stream.Stream;
  * @author tusk
  * @desc 删除有序数组中的重复项
  * 给定一个排序数组，原地删除重复出现的元素，使得每个元素只出现一次，返回移除后数组的新长度
+ *
+ * 解题思路：双指针
  * @date 2020/11/26 10:58
  */
 public class P26_RemoveDuplicateItem {

@@ -17,32 +17,32 @@ public class P112_HasPathSum {
      * @param targetSum
      * @return
      */
-    public boolean hasPathSum(BinaryTreeNode root, int targetSum) {
+    public boolean hasPathSum(TreeNode root, int targetSum) {
         if (root == null) {
             return false;
         }
 
         if (root.left == null && root.right == null) {
-            return root.key == targetSum;
+            return root.val == targetSum;
         }
 
-        return hasPathSum(root.left, targetSum - root.key)
-                || hasPathSum(root.right, targetSum - root.key);
+        return hasPathSum(root.left, targetSum - root.val)
+                || hasPathSum(root.right, targetSum - root.val);
     }
 
-    public boolean hasPathSum01(BinaryTreeNode root,int sum){
+    public boolean hasPathSum01(TreeNode root, int sum){
         if(root == null){
             return false;
         }
 
-        Queue<BinaryTreeNode> nodes_q = new LinkedList<>();
+        Queue<TreeNode> nodes_q = new LinkedList<>();
         Queue<Integer> val_q = new LinkedList<>();
 
         nodes_q.offer(root);
-        val_q.offer(root.key);
+        val_q.offer(root.val);
 
         while (!nodes_q.isEmpty()){
-            BinaryTreeNode node = nodes_q.poll();
+            TreeNode node = nodes_q.poll();
             int val = val_q.poll();
 
             if(node.right == null&&node.left == null){
@@ -54,12 +54,12 @@ public class P112_HasPathSum {
 
             if(node.left!=null){
                 nodes_q.offer(node.left);
-                val_q.offer(node.left.key + val);
+                val_q.offer(node.left.val + val);
             }
 
             if(node.right!=null){
                 nodes_q.offer(node.right);
-                val_q.offer(node.right.key + val);
+                val_q.offer(node.right.val + val);
             }
         }
 

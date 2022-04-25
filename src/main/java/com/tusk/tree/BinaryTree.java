@@ -21,7 +21,7 @@ public class BinaryTree {
         int[] pre = new int[]{40, 20, 70, 60, 75, 71, 73};
         int[] mid = new int[]{20, 40, 60, 70, 71, 73, 75};
 
-        BinaryTreeNode root = PM(pre, mid, pre.length);
+        TreeNode root = PM(pre, mid, pre.length);
 //        insert(root, 9);
 //        midOrderTraversal(root);
 //        System.out.println(getNext(root, 40).key);
@@ -38,16 +38,16 @@ public class BinaryTree {
      * @param len
      * @return
      */
-    public static BinaryTreeNode PM(int[] pre, int[] mid, int len) {
+    public static TreeNode PM(int[] pre, int[] mid, int len) {
         if (pre == null || mid == null) {
             return null;
         }
 
-        BinaryTreeNode root = new BinaryTreeNode();
+        TreeNode root = new TreeNode();
         int rootKey = pre[0];
 
         //先序遍历序列的第一个元素就是根元素
-        root.key = rootKey;
+        root.val = rootKey;
 
         //长度为1,先序遍历和中序遍历序列相同
         if (len == 1 && Arrays.equals(pre, mid)) {
@@ -105,12 +105,12 @@ public class BinaryTree {
      *
      * @param root
      */
-    public static void preOrderTraversal(BinaryTreeNode root) {
+    public static void preOrderTraversal(TreeNode root) {
         if (root == null) {
             return;
         }
 
-        System.out.println(root.key);
+        System.out.println(root.val);
         preOrderTraversal(root.left);
         preOrderTraversal(root.right);
     }
@@ -120,13 +120,13 @@ public class BinaryTree {
      *
      * @param root
      */
-    public static void midOrderTraversal(BinaryTreeNode root) {
+    public static void midOrderTraversal(TreeNode root) {
         if (root == null) {
             return;
         }
 
         midOrderTraversal(root.left);
-        System.out.println(root.key);
+        System.out.println(root.val);
         midOrderTraversal(root.right);
     }
 
@@ -135,14 +135,14 @@ public class BinaryTree {
      *
      * @param root
      */
-    public static void lastOrderTraversal(BinaryTreeNode root) {
+    public static void lastOrderTraversal(TreeNode root) {
         if (root == null) {
             return;
         }
 
         lastOrderTraversal(root.right);
         lastOrderTraversal(root.left);
-        System.out.println(root.key);
+        System.out.println(root.val);
     }
 
     /**
@@ -150,12 +150,12 @@ public class BinaryTree {
      *
      * @param root
      */
-    public static void levelTraversal(BinaryTreeNode root) {
+    public static void levelTraversal(TreeNode root) {
         if (root == null) {
             return;
         }
 
-        Queue<BinaryTreeNode> queue = new LinkedList<>();
+        Queue<TreeNode> queue = new LinkedList<>();
 
 
         queue.add(root);
@@ -166,8 +166,8 @@ public class BinaryTree {
          * 执行上述流程直至队列为空
          */
         while (!queue.isEmpty()) {
-            BinaryTreeNode node = queue.poll();
-            System.out.println(node.key);
+            TreeNode node = queue.poll();
+            System.out.println(node.val);
 
             if (node.left != null) {
                 queue.add(node.left);
@@ -191,20 +191,20 @@ public class BinaryTree {
      * @param key
      * @return
      */
-    public static BinaryTreeNode getPre(BinaryTreeNode root, int key) {
+    public static TreeNode getPre(TreeNode root, int key) {
         if (root == null) {
             return null;
         }
 
-        BinaryTreeNode cur = null;
-        BinaryTreeNode p = null;
-        BinaryTreeNode next = root;
+        TreeNode cur = null;
+        TreeNode p = null;
+        TreeNode next = root;
 
         while (next != null) {
-            if (next.key == key) {
+            if (next.val == key) {
                 cur = next;
                 break;
-            } else if (key < next.key) {
+            } else if (key < next.val) {
                 p = next;
                 next = next.left;
             } else {
@@ -222,10 +222,10 @@ public class BinaryTree {
                 next = root;
                 cur = p;
                 while (next != null) {
-                    if (next.key == cur.key) {
+                    if (next.val == cur.val) {
 //                        p = next;
                         break;
-                    } else if (cur.key < next.key) {
+                    } else if (cur.val < next.val) {
                         p = next;
                         next = next.left;
                     } else {
@@ -259,20 +259,20 @@ public class BinaryTree {
      * @param key
      * @return
      */
-    public static BinaryTreeNode getNext(BinaryTreeNode root, int key) {
+    public static TreeNode getNext(TreeNode root, int key) {
         if (root == null) {
             return null;
         }
 
-        BinaryTreeNode p = null;
-        BinaryTreeNode cur = null;
-        BinaryTreeNode next = root;
+        TreeNode p = null;
+        TreeNode cur = null;
+        TreeNode next = root;
 
         while (next != null) {
-            if (next.key == key) {
+            if (next.val == key) {
                 cur = next;
                 break;
-            } else if (key < next.key) {
+            } else if (key < next.val) {
                 p = next;
                 next = next.left;
             } else {
@@ -297,9 +297,9 @@ public class BinaryTree {
                     next = root;
                     p = null;
                     while (next != null) {
-                        if (cur.key == next.key) {
+                        if (cur.val == next.val) {
                             break;
-                        } else if (cur.key < next.key) {
+                        } else if (cur.val < next.val) {
                             p = next;
                             next = next.left;
                         } else {
@@ -323,16 +323,16 @@ public class BinaryTree {
      * @param key
      * @return 查找成功返回 true,否则返回 false
      */
-    public static BinaryTreeNode searchTree(BinaryTreeNode root, int key) {
+    public static TreeNode searchTree(TreeNode root, int key) {
         if (root == null) {
             return null;
         }
 
-        if (key == root.key) {
+        if (key == root.val) {
             return root;
-        } else if (root.left != null && key < root.key) {
+        } else if (root.left != null && key < root.val) {
             return searchTree(root.left, key);
-        } else if (root.right != null && key > root.key) {
+        } else if (root.right != null && key > root.val) {
             return searchTree(root.right, key);
         }
 
@@ -346,15 +346,15 @@ public class BinaryTree {
      * @param key
      * @return
      */
-    public static BinaryTreeNode insert(BinaryTreeNode root, int key) {
+    public static TreeNode insert(TreeNode root, int key) {
         if (root == null) {
-            root = new BinaryTreeNode();
-            root.key = key;
+            root = new TreeNode();
+            root.val = key;
 
             return root;
         }
 
-        BinaryTreeNode node = searchTree(root, key);
+        TreeNode node = searchTree(root, key);
 
         if (node != null) {
             return node;
@@ -373,29 +373,29 @@ public class BinaryTree {
      * @param key
      * @return
      */
-    public static void del(BinaryTreeNode root, int key) {
+    public static void del(TreeNode root, int key) {
         if (root == null) {
             return;
         }
 
         //记录当前节点的父节点
-        BinaryTreeNode p = null;
+        TreeNode p = null;
 
         //记录当前节点
-        BinaryTreeNode next = root;
+        TreeNode next = root;
 
         //记录目标节点
-        BinaryTreeNode target = null;
+        TreeNode target = null;
 
-        if (root.key == key) {
+        if (root.val == key) {
             target = root;
         } else {
             //查找要删除的节点及其父节点
             while (next != null) {
-                if (key < next.key) {
+                if (key < next.val) {
                     p = next;
                     next = next.left;
-                } else if (key > next.key) {
+                } else if (key > next.val) {
                     p = next;
                     next = next.right;
                 } else {
@@ -449,7 +449,7 @@ public class BinaryTree {
                     //(或比目标节点小的所有节点中的最大值节点)
                     //中继后续节点即当前节点的右子树的最左节点，因此，中继后续节点一定没有左孩子
 
-                    BinaryTreeNode relayTreeNode = getRelayNextNode(target);
+                    TreeNode relayTreeNode = getRelayNextNode(target);
 
                     if (target == root) {
                         root = relayTreeNode;
@@ -472,7 +472,7 @@ public class BinaryTree {
      * @param root
      * @return
      */
-    public static int maxDepth(BinaryTreeNode root) {
+    public static int maxDepth(TreeNode root) {
         return P104_MaxDepth.maxDepth(root);
     }
 
@@ -482,10 +482,10 @@ public class BinaryTree {
      * @param node
      * @return
      */
-    private static BinaryTreeNode getRelayNextNode(BinaryTreeNode node) {
-        BinaryTreeNode cur = node.right;
-        BinaryTreeNode p = null;
-        BinaryTreeNode relayNode = cur;
+    private static TreeNode getRelayNextNode(TreeNode node) {
+        TreeNode cur = node.right;
+        TreeNode p = null;
+        TreeNode relayNode = cur;
 
         while (cur != null) {
             p = cur;
@@ -508,18 +508,18 @@ public class BinaryTree {
         return relayNode;
     }
 
-    private static BinaryTreeNode insertInternal(BinaryTreeNode root, int key) {
+    private static TreeNode insertInternal(TreeNode root, int key) {
 
-        if (key < root.key) {
+        if (key < root.val) {
             if (root.left == null) {
-                root.left = new BinaryTreeNode(key);
+                root.left = new TreeNode(key);
                 return root.left;
             } else {
                 return insertInternal(root.left, key);
             }
         } else {
             if (root.right == null) {
-                root.right = new BinaryTreeNode(key);
+                root.right = new TreeNode(key);
                 return root.right;
             } else {
                 return insertInternal(root.right, key);

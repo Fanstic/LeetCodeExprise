@@ -10,6 +10,8 @@ import java.util.LinkedList;
  * <p>
  * 当删除了倒数第二个节点后，链表变为 1->2->3->5.
  *
+ *
+ * 解题思路:快慢指针的应用
  * @author tusk
  * @desc
  * @date 2020/12/15 15:46
