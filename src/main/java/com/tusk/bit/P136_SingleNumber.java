@@ -1,4 +1,4 @@
-package com.tusk;
+package com.tusk.bit;
 
 import java.util.Arrays;
 import java.util.HashMap;
