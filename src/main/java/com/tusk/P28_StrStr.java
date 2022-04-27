@@ -13,9 +13,9 @@ public class P28_StrStr {
 
     public static void main(String[] args) {
         String haystack = "hello";
-        String needle = "o";
+        String needle = "el";
 
-        System.out.println(strStr(haystack, needle));
+        System.out.println(strStrOffice(haystack, needle));
     }
 
     //最简单的是使用 滑动窗口 + subString 去实现
@@ -90,10 +90,11 @@ public class P28_StrStr {
         if (l == 0) return 0;
 
         int pn = 0;
-        while (pn < n - l + 1) {
-            // find the position of the first needle character
-            // in the haystack string
-            while (pn < n - l + 1 && haystack.charAt(pn) != needle.charAt(0)) ++pn;
+
+        //如果目标串在查找串中存在，那么 pn<=n-l
+        while (pn <= n - l) {
+            //找到目标串第一个字符在查找串中出现的位置,即pn
+            while (pn <= n - l && haystack.charAt(pn) != needle.charAt(0)) ++pn;
 
             // compute the max match string
             int currLen = 0, pL = 0;
@@ -107,7 +108,7 @@ public class P28_StrStr {
             // return its start position
             if (currLen == l) return pn - l;
 
-            // otherwise, backtrack
+            // otherwise, backtrack,匹配失败，则回退，相当于是从原pn的下一个位置开始找
             pn = pn - currLen + 1;
         }
         return -1;

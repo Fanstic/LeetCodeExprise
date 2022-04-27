@@ -58,6 +58,7 @@ public class P70_ClaimbStairs {
      * 时间复杂度：O(n)
      * 空间复杂度：O(1)
      *
+     * 这种方式相当于是对第 n -1 个楼梯和第n -2 个楼梯数进行了存储
      * @param n 楼梯阶数
      * @return 方案数
      */
