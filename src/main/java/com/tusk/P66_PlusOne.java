@@ -13,8 +13,8 @@ package com.tusk;
 public class P66_PlusOne {
 
     public static void main(String[] args) {
-        int[] arr = {9};
-        arr = plusOne(arr);
+        int[] arr = {9,9};
+        arr = plusOneImprove(arr);
         for (int a : arr) {
             System.out.println(a);
         }
@@ -71,7 +71,7 @@ public class P66_PlusOne {
      * @return 运算结果数组
      */
     public static int[] plusOneImprove(int[] digits) {
-        for (int i = 0; i < digits.length; i++){
+        for (int i = digits.length - 1; i >=0; i--){
             if(digits[i] == 9){
                 digits[i] = 0;
             }else{
@@ -80,6 +80,7 @@ public class P66_PlusOne {
             }
         }
 
+        //只有最高位为9并且需要向上进一位时会走这里的逻辑，也即数组里全是9的情况
         digits = new int[digits.length + 1];
         digits[0] = 1;
         return digits;

@@ -16,7 +16,8 @@ public class P27_RemoveElement {
 
     public static void main(String[] args) {
         int[] arr = {3, 2, 2, 3};
-        int size = removeElement(arr, 3);
+        arr = new int[] {1,3,8,3,6,2};
+        int size = removeElementOffice(arr, 3);
         arr = Arrays.copyOf(arr, size);
         for (int e : arr) {
             System.out.println(e);
@@ -70,6 +71,7 @@ public class P27_RemoveElement {
     public static int removeElementOffice(int[] nums,int val){
         int i = 0;
         for (int j = 0; j < nums.length; j++) {
+            //i表示下一步要赋值的地方，j表示当前处理的位置
             if (nums[j] != val) {
                 nums[i] = nums[j];
                 i++;
