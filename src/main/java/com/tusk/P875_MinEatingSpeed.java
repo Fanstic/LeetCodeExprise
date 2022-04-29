@@ -38,7 +38,7 @@ package com.tusk;
  * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
  * @date 2021/12/13 10:37
  */
-public class P8567_MinEatingSpeed {
+public class P875_MinEatingSpeed {
     public int minEatingSpeed(int[] piles, int h) {
         int low = 1;
         int high = 1_000_000_000;
