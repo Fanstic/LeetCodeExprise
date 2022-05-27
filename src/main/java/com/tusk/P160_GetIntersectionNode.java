@@ -122,10 +122,23 @@ public class P160_GetIntersectionNode {
      * @return
      */
     public ListNode getIntersectionNode_dl(ListNode headA, ListNode headB) {
+        //只有任一一个链表为空，一定不存在交点
         if (headA == null || headB == null) {
             return null;
         }
         ListNode pA = headA, pB = headB;
+
+        //region
+        // 1.存在交点时
+        //记链表A的独有的部分长度为a,链表B独有的部分长度为b，两者公共的部分长度为c,
+        //如果a=b,则第一次遍历，两者便会在交点相遇
+        //如果a!=b,则两者相遇时，A上走过的距离为 a+c +b,B 上走过的距离为 b+c +a,这种情况下可以理解为两者在尾部对齐，然后走过彼此单独走过的路之后相遇
+
+        //2.不存在交点时
+        //记链表A的长度为a,链表B长度为b
+        ///如果a=b,a=b=null时退出循环
+        //如果 a!=b时，在A走过a+b，B走过b+a时同时变为null
+        //endregion
         while (pA != pB) {
             pA = pA == null ? headB : pA.next;
             pB = pB == null ? headA : pB.next;
