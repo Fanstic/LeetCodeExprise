@@ -64,6 +64,7 @@ public class P295_MedianFinder {
             }
         } else {
             maxQue.offer(num);
+            //如果大顶堆元素个数大于小顶堆，则将大顶堆堆顶元素移到小顶堆
             if (maxQue.size() > minQue.size()) {
                 minQue.offer(maxQue.poll());
             }

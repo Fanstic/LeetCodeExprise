@@ -20,10 +20,10 @@ public class QuickSort {
     public static void main(String[] args) {
         QuickSort obj = new QuickSort();
         int[] data = {10, 3, 7, 9, 5, 2, 1, 8, 4, 6};
-        int[] data2 = {3, 7, 10, 9, 8};
+        int[] data2 = {3, 7, 10, 9, 8};int[] data3 = {27,38,12,39,27,16};
 
-        data = data2;
-        obj.quick_sort(data, 0, data.length - 1);
+        data = data3;
+        obj.sort_recursive(data, 0, data.length - 1);
         System.out.println(Arrays.toString(data));
     }
 
