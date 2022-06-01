@@ -61,6 +61,7 @@ public class P3_LengthOfLongestSubstring {
     }
 
     public int lengthOfLongestSubstring(String s) {
+        //记录窗口内各个字符出现的次数
         Map<Character, Integer> window = new HashMap<>();
 
         int left = 0;
@@ -77,6 +78,8 @@ public class P3_LengthOfLongestSubstring {
             while (window.get(c) > 1) {
                 Character cur = s.charAt(left);
                 left++;
+
+                //左侧字符移除窗口，计数减1
                 window.put(cur, window.get(cur) - 1);
             }
 

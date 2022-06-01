@@ -38,14 +38,15 @@ public class FindRepeadNumber {
      * <p>
      * 这里说一种非常规的空间复杂度为O(1)的解法，n个元素的数组，元素取值范围 0~n-1，如果不存在重复元素的前提下，则排序后标为i的位置的元素也是i，
      * 这也是解决这个问题的一个重要的条件
-     *
-     *
+     * <p>
+     * <p>
      * 思考问题时可以采用测试驱动的方式逆向的来编码，也即写代码前，先想场景下的测试用例，然后根据测试用例，反向的转换为代码
      * 这个场景下的 test-case
      * 1.输入空数组或空指针不报错
      * 2.数组中存在不符合条件的元素能正常运行
      * 3.数组中存在重复元素
      * 4.数组中不存在重复元素
+     *
      * @param nums
      * @return
      */
@@ -55,33 +56,33 @@ public class FindRepeadNumber {
         }
 
         //如果存在小于0或大于nums.length-1的值，则会发送数组越界的问题
-        for(int i=0;i<nums.length;i++){
-            if(nums[i]<0 || nums[i]>nums.length - 1){
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] < 0 || nums[i] > nums.length - 1) {
                 return -1;
             }
         }
 
         int i = 0;
-        while(i<nums.length){
+        while (i < nums.length) {
 
             int j = nums[i];
 
             //索引位置的数和索引值不相等
-            if(j!=i){
+            if (j != i) {
                 //判断j位置的数是否为j,如果是j,就说明j存在重复
-                if(nums[j] == j){
+                if (nums[j] == j) {
                     return j;
-                }else{
+                } else {
                     //如果j位置的数不为j,就将i位置的数和j位置的数交换位置
                     int temp = nums[i];
                     nums[i] = nums[j];
                     nums[j] = temp;
                 }
-            }else{
+            } else {
                 i++;
             }
         }
 
-        return  -1;
+        return -1;
     }
 }

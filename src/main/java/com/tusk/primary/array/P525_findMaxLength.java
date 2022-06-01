@@ -86,6 +86,7 @@ public class P525_findMaxLength {
         int maxLength = 0;
         int counter = 0;
 
+        //map用来记录前缀和及第一次出现的下标
         Map<Integer, Integer> map = new HashMap<>();
 
         //空的前缀前缀和为0

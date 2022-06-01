@@ -5,7 +5,7 @@ import com.tusk.model.ListNode;
 /**
  * @author tusk
  * @desc 合并两个有序单链表
- * @date 2021/5/8 11:13
+ * @date 2021/5/8 11:132
  */
 public class P21_MergeTwoList {
 

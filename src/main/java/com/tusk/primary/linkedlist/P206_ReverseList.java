@@ -54,7 +54,7 @@ public class P206_ReverseList {
 
     /**
      * 迭代法
-     * 时间复杂度:O(n),n为链表的长度
+     * 时间复杂度:O(n),n为链表的长度0
      * 空间复杂度:O(1)
      * https://leetcode-cn.com/problems/reverse-linked-list/solution/fan-zhuan-lian-biao-by-leetcode/
      * @param head

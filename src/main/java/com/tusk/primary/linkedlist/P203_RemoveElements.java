@@ -39,6 +39,7 @@ public class P203_RemoveElements {
 
         ListNode pre = null;
 
+        //找到第一个不等于指定值的节点
         while (head!=null&&head.val == val) {
             head = head.next;
         }

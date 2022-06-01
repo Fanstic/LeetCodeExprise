@@ -127,9 +127,11 @@ public class P23_MergeKLikst {
         }
 
         while (!pbq.isEmpty()) {
+            //pdq.poll()获取的可以认为是所有元素中最小的一个
             p.next = pbq.poll();
             p = p.next;
 
+            //这里判断当前取值的链表是否还有数据，如果又就再次将它加入到小顶堆中
             if (p.next != null) {
                 pbq.add(p.next);
             }

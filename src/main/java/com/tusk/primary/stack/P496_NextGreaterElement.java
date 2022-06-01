@@ -34,11 +34,16 @@ public class P496_NextGreaterElement {
         int[] nums1 = {4,1,2};
         int[] nums2 = {1,3,4,2};
 
-        int[] result = element.nextGreaterElement(nums1,nums2);
+//        int[] result = element.nextGreaterElement(nums1,nums2);
+//
+//        for (int j : result) {
+//            System.out.println(j);
+//        }
+        Deque<Integer> stack = new ArrayDeque<>();
+        stack.addLast(1);
+        stack.addLast(2);
 
-        for (int j : result) {
-            System.out.println(j);
-        }
+        System.out.println(stack.peekLast());
     }
     public int[] nextGreaterElement(int[] nums1, int[] nums2) {
 
