@@ -18,8 +18,8 @@ public class P20_IsValid {
     }
 
     public static boolean isvalid(String s) {
-        int n = s.length();
-        if (n <= 0 || n % 2 == 1) {
+        int n = -1;
+        if (s == null ||(n=s.length()) <= 0 || n % 2 != 0) {
             return false;
         }
 
